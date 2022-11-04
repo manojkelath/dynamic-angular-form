@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +40,10 @@ export class AppComponent {
       this.emails.push( this.fb.group({
         id: email.id,
         name: [email.id],
-        email: email.emailAddress
+        email: new FormControl(email.emailAddress, [
+          Validators.required,
+          Validators.minLength(5)
+        ])
       }));
     });
 
@@ -50,7 +53,10 @@ export class AppComponent {
   private addNewEmailControl(): FormGroup {
     return this.fb.group({
       name: ['Email'],
-      email: ''
+      email: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5)
+      ])
     });
   }
 

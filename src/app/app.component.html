@@ -7,8 +7,11 @@
           <div [formGroupName]="i">
             <input type="textbox" formControlName="email" /> 
             <button (click)="removeEmail(i)">remove email</button>
-
-            <code>{{email.get('name').value}}</code>
+            <div style="color:red;" *ngIf="!email.valid">
+                Invalid Email
+            </div>
+            <code>valid:{{email.valid}}
+            </code>
           </div>
         </div>
       </div>
