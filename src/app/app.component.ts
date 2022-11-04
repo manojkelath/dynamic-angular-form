@@ -40,6 +40,7 @@ export class AppComponent {
       this.emails.push( this.fb.group({
         id: email.id,
         name: [email.id],
+        primaryIndicator: new FormControl('true'),
         email: new FormControl(email.emailAddress, [
           Validators.required,
           Validators.minLength(5)
@@ -53,6 +54,7 @@ export class AppComponent {
   private addNewEmailControl(): FormGroup {
     return this.fb.group({
       name: ['Email'],
+      primaryIndicator: new FormControl(''),
       email: new FormControl('', [
         Validators.required,
         Validators.minLength(5)

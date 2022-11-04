@@ -6,6 +6,7 @@
         <div *ngFor="let email of emails.controls;let i=index" >
           <div [formGroupName]="i">
             <input type="textbox" formControlName="email" /> 
+            <input type="radio" value="true" formControlName="primaryIndicator" /> 
             <button (click)="removeEmail(i)">remove email</button>
             <div style="color:red;" *ngIf="!email.valid">
                 Invalid Email
