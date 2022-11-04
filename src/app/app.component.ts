@@ -38,6 +38,7 @@ export class AppComponent {
     ];
     emailData.forEach((email)=>{
       this.emails.push( this.fb.group({
+        id: email.id,
         name: [email.id],
         email: email.emailAddress
       }));
@@ -55,6 +56,8 @@ export class AppComponent {
 
   addEmail(): void {
     this.emails.push(this.addNewEmailControl());
+    // use this to map directly to an object if required.
+    console.log(this.form.getRawValue().emails);
   }
 
   removeEmail(index: number): void {
