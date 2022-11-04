@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <h1> Angular Form Array Example</h1>
+  <form class="form" [formGroup]="form">
+    <div class="container">
+      <div formArrayName="emails">
+        <div *ngFor="let email of emails.controls;let i=index" >
+          <div [formGroupName]="i">
+            <input type="textbox" formControlName="email" /> 
+            <button (click)="removeEmail(i)">remove email</button>
+
+            <code>{{email.get('name').value}}</code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+        <div>
+        <button (click)="addEmail()">Add new email</button>
+
+      </div>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+    {{this.form.getRawValue() | json}}
+  </div>
+</div>
